@@ -1,0 +1,139 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 25/09/2016 09:53
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-attachment:before { content: "\f100"; }
+.flaticon-bars:before { content: "\f101"; }
+.flaticon-biscuit:before { content: "\f102"; }
+.flaticon-bomb:before { content: "\f103"; }
+.flaticon-bottle:before { content: "\f104"; }
+.flaticon-cake:before { content: "\f105"; }
+.flaticon-chocolate:before { content: "\f106"; }
+.flaticon-clock:before { content: "\f107"; }
+.flaticon-clock-1:before { content: "\f108"; }
+.flaticon-cloud:before { content: "\f109"; }
+.flaticon-coffee-beans:before { content: "\f10a"; }
+.flaticon-coffee-cup:before { content: "\f10b"; }
+.flaticon-coffee-cup-1:before { content: "\f10c"; }
+.flaticon-coffee-cup-2:before { content: "\f10d"; }
+.flaticon-coffee-cup-3:before { content: "\f10e"; }
+.flaticon-coffee-pot:before { content: "\f10f"; }
+.flaticon-cookie:before { content: "\f110"; }
+.flaticon-error:before { content: "\f111"; }
+.flaticon-food:before { content: "\f112"; }
+.flaticon-frappe:before { content: "\f113"; }
+.flaticon-global:before { content: "\f114"; }
+.flaticon-home:before { content: "\f115"; }
+.flaticon-idea:before { content: "\f116"; }
+.flaticon-interface:before { content: "\f117"; }
+.flaticon-kettle:before { content: "\f118"; }
+.flaticon-like:before { content: "\f119"; }
+.flaticon-like-1:before { content: "\f11a"; }
+.flaticon-line:before { content: "\f11b"; }
+.flaticon-mixer:before { content: "\f11c"; }
+.flaticon-placeholder:before { content: "\f11d"; }
+.flaticon-play-button:before { content: "\f11e"; }
+.flaticon-plus:before { content: "\f11f"; }
+.flaticon-power:before { content: "\f120"; }
+.flaticon-profile:before { content: "\f121"; }
+.flaticon-round:before { content: "\f122"; }
+.flaticon-search:before { content: "\f123"; }
+.flaticon-settings:before { content: "\f124"; }
+.flaticon-share:before { content: "\f125"; }
+.flaticon-share-1:before { content: "\f126"; }
+.flaticon-spoon:before { content: "\f127"; }
+.flaticon-star:before { content: "\f128"; }
+.flaticon-stopwatch:before { content: "\f129"; }
+.flaticon-success:before { content: "\f12a"; }
+.flaticon-tea-cup:before { content: "\f12b"; }
+.flaticon-tea-cup-1:before { content: "\f12c"; }
+.flaticon-tea-cup-2:before { content: "\f12d"; }
+.flaticon-time:before { content: "\f12e"; }
+.flaticon-time-1:before { content: "\f12f"; }
+.flaticon-user:before { content: "\f130"; }
+.flaticon-view:before { content: "\f131"; }
+    
+    $font-Flaticon-attachment: "\f100";
+    $font-Flaticon-bars: "\f101";
+    $font-Flaticon-biscuit: "\f102";
+    $font-Flaticon-bomb: "\f103";
+    $font-Flaticon-bottle: "\f104";
+    $font-Flaticon-cake: "\f105";
+    $font-Flaticon-chocolate: "\f106";
+    $font-Flaticon-clock: "\f107";
+    $font-Flaticon-clock-1: "\f108";
+    $font-Flaticon-cloud: "\f109";
+    $font-Flaticon-coffee-beans: "\f10a";
+    $font-Flaticon-coffee-cup: "\f10b";
+    $font-Flaticon-coffee-cup-1: "\f10c";
+    $font-Flaticon-coffee-cup-2: "\f10d";
+    $font-Flaticon-coffee-cup-3: "\f10e";
+    $font-Flaticon-coffee-pot: "\f10f";
+    $font-Flaticon-cookie: "\f110";
+    $font-Flaticon-error: "\f111";
+    $font-Flaticon-food: "\f112";
+    $font-Flaticon-frappe: "\f113";
+    $font-Flaticon-global: "\f114";
+    $font-Flaticon-home: "\f115";
+    $font-Flaticon-idea: "\f116";
+    $font-Flaticon-interface: "\f117";
+    $font-Flaticon-kettle: "\f118";
+    $font-Flaticon-like: "\f119";
+    $font-Flaticon-like-1: "\f11a";
+    $font-Flaticon-line: "\f11b";
+    $font-Flaticon-mixer: "\f11c";
+    $font-Flaticon-placeholder: "\f11d";
+    $font-Flaticon-play-button: "\f11e";
+    $font-Flaticon-plus: "\f11f";
+    $font-Flaticon-power: "\f120";
+    $font-Flaticon-profile: "\f121";
+    $font-Flaticon-round: "\f122";
+    $font-Flaticon-search: "\f123";
+    $font-Flaticon-settings: "\f124";
+    $font-Flaticon-share: "\f125";
+    $font-Flaticon-share-1: "\f126";
+    $font-Flaticon-spoon: "\f127";
+    $font-Flaticon-star: "\f128";
+    $font-Flaticon-stopwatch: "\f129";
+    $font-Flaticon-success: "\f12a";
+    $font-Flaticon-tea-cup: "\f12b";
+    $font-Flaticon-tea-cup-1: "\f12c";
+    $font-Flaticon-tea-cup-2: "\f12d";
+    $font-Flaticon-time: "\f12e";
+    $font-Flaticon-time-1: "\f12f";
+    $font-Flaticon-user: "\f130";
+    $font-Flaticon-view: "\f131";
