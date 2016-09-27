@@ -1,0 +1,135 @@
+<html>
+	<head>
+		<link href="booons.css" rel='stylesheet' type='text/css' />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,700italic,400,300,600,700' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="js/booons.js"></script>
+		<script type="text/javascript" src="js/sha1.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="icons/font/flaticon.css"> 
+	</head>
+	<body>
+		<script>
+		
+		</script>
+		<div class="app_header">
+			<h1> Booons</h1>
+		</div>	
+		<div class="app_body">
+			<div class="app_title">
+				<h2 class="app_titleLabel">Title</h2>
+			</div>
+			<div class="app_error">
+				Sorry you are too ugly to login!
+			</div>
+			<div class="app_content">
+				<div id="pag_home" class="app_page">
+					<p>We need to know who you are and in what group you want to play...</p>
+					<p>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/user.svg" /><div class="lst_label"><input id="inp_username" type="text" placeholder="Who the %^$&&* are you?" /></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/placeholder.svg" /><div class="lst_label"><input id="inp_group" type="text" placeholder="And what group you play?" /></div></div>
+					</p>
+				</div>
+				<div id="pag_nor" class="app_page">
+					<p>There is no open round, start one if you want some...</p>
+					<p>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/user.svg" /><div class="lst_label"><h3>4 Users</h3><p>are in this group</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/coffee-pot.svg" /><div class="lst_label"><h3>12 minutes</h3><p>Since the last round</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/coffee-beans.svg" /><div class="lst_label"><h3>11 booons</h3><p>are in the group, you have 3 booons</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/bars.svg" /><div class="lst_label"><h3>Number 2</h3><p>is you position on the board</p></div></div>
+						</ul>
+					</p>
+				</div>
+				<div id="pag_oro" class="app_page">
+					<p>There is a open round, order if you like to</p>
+					<p>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/time.svg" /><div class="lst_label"><h3><span id="lbl_roundtimer"></span> seconds</h3><p>left in this round</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/bars.svg" /><div class="lst_label"><h3>2 out of 4 orders</h3><p>are in, 2 more to go</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/bomb.svg" /><div class="lst_label"><h3>1 ambush</h3><p>Are you one of them?</p></div></div>
+					</p>
+				</div>
+				<div id="pag_pro" class="app_page">
+					<p>What ya want? You can select option in the next screen</p>
+					<p>
+						<div class="lst_item selectable selecteditem" itemtype="pro" itemvalue="ame"><img class="lst_icon" src="icons/svg/coffee-cup-3.svg" /><div class="lst_label"><h3 class="icon-green">Americano</h3><p>like the cowboy drink</p></div></div>
+						<div class="lst_item selectable" itemtype="pro" itemvalue="cap"><img class="lst_icon" src="icons/svg/coffee-cup-2.svg" /><div class="lst_label"><h3 class="icon-green">Cappucino</h3><p>for the posh ones</p></div></div>
+						<div class="lst_item selectable" itemtype="pro" itemvalue="tea"><img class="lst_icon" src="icons/svg/tea-cup-1.svg" /><div class="lst_label"><h3 class="icon-green">Tea</h3><p>for the girls</p></div></div>
+						<div class="lst_item selectable" itemtype="pro" itemvalue="smo"><img class="lst_icon" src="icons/svg/mixer.svg" /><div class="lst_label"><h3 class="icon-green">Smoothy</h3><p>fruity and healthy</p></div></div>
+						<div class="lst_item selectable" itemtype="pro" itemvalue="irc"><img class="lst_icon" src="icons/svg/food.svg" /><div class="lst_label"><h3 class="icon-green">Irish coffee</h3><p>You drunk!</p></div></div>
+						<div class="lst_item selectable" itemtype="pro" itemvalue="wat"><img class="lst_icon" src="icons/svg/bottle.svg" /><div class="lst_label"><h3 class="icon-green">Water</h3><p>Milk, milk, milk... what does a cow drink?</p></div></div>
+						<div class="lst_item"><div class="lst_label"> </div></div>
+
+					</p>
+				</div>
+				<div id="pag_opt" class="app_page">
+					<p>Are you a special needs person? Select the options for you order.</p>
+					<p>
+						<div class="lst_item selectable selecteditem" itemtype="opt" itemvalue=""><img class="lst_icon" src="icons/svg/spoon.svg" /><div class="lst_label"><h3 class="icon-green">Sugar</h3><p>Want some, sugar?</p></div></div>
+						<div class="lst_item selectable" itemtype="opt" itemvalue=""><img class="lst_icon" src="icons/svg/line.svg" /><div class="lst_label"><h3 class="icon-green">Sweetner</h3><p>Sweet like sugar</p></div></div>
+						<div class="lst_item selectable selecteditem" itemtype="opt" itemvalue=""><img class="lst_icon" src="icons/svg/kettle.svg" /><div class="lst_label"><h3 class="icon-green">Milk</h3><p>Mooooooh</p></div></div>
+						<div class="lst_item selectable" itemtype="opt" itemvalue=""><img class="lst_icon" src="icons/svg/cookie.svg" /><div class="lst_label"><h3 class="icon-green">Cookie</h3><p>Jummie!</p></div></div>
+						<div class="lst_item selectable" itemtype="opt" itemvalue=""><img class="lst_icon" src="icons/svg/coffee-cup.svg" /><div class="lst_label"><h3 class="icon-green">To-go</h3><p>Just something for on the road</p></div></div>
+						<div class="lst_item"><div class="lst_label"> </div></div>
+					</p>
+				</div>
+			</div>
+
+			<div class="app_navigation">
+				<div class="app_button1 gotostate" state=""> </div>
+			</div>
+		</div>	
+		<div class="app_footer">
+			
+				copyright 2016 || Seons
+				<span style="display:none;">
+					|| 
+					<span id="sst_home" class="sst_selector">home</span> || 
+					<span id="sst_nor" class="sst_selector">nor</span> || 
+					<span id="sst_oro" class="sst_selector">oro</span> || 
+					<span id="sst_pro" class="sst_selector">pro</span> || 
+					<span id="sst_opt" class="sst_selector">opt</span> 
+				</span>			
+		</div>
+		<script>
+			// UI interaction
+			$(document).ready(function(){
+				var sVarSelector = getParameterByName("sst_selector");
+				registerDevice();
+				setState(sVarSelector);
+			});
+			
+			$('.sst_selector').click(function(){
+				var sSelectedState = $(this).attr('id');
+				setState(sSelectedState);
+			});
+			$('.gotostate').click(function(){
+				var sSelectedState = $(this).attr('state');
+				processState(sSelectedState);
+			});
+
+			$('.selectable').click(function(){
+				var sClickedItem = $(this).attr('itemtype');
+				var sClickedValue = $(this).attr('itemvalue');
+				$('.selectable').removeClass('selecteditem');
+				$(this).addClass('selecteditem');
+				log('click event for item: '+ sClickedItem +' on the value: '+ sClickedValue);
+			});
+			$('#inp_username').blur(function() {
+  				if ($('#inp_username').val() == 'jeremy' || $('#inp_username').val() == 'Jeremy') {
+  					$('.app_error').slideDown('slow');
+  				} else {
+  					$('.app_error').slideUp('slow');
+  				}
+			});
+			
+			
+//      url: "http://booons.nl/api10/api10.asp?method=examplejson"
+
+
+
+			
+			
+			
+		</script>
+	</body>
+</html>
