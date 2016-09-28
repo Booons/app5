@@ -25,6 +25,7 @@ body {
     font-weight: 600;
     margin: 0;
     text-transform: uppercase;
+    display:none;
 }
 
 .app_content {
