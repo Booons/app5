@@ -1,6 +1,28 @@
 // --------------------------------------------------------------------------
 // API functions 
 // --------------------------------------------------------------------------
+
+function startRound(sGroupname, sUsername){
+	var sMethode		= 'startround';
+	var sAuthkey 		= 'IDKFA';
+	var sQueryString 	= 'authkey='+ sAuthkey +'&username='+ sUsername +'&groupname='+ sGroupname +'&method='+sMethode;
+	var sHashKey 		= "";
+	var sHashKey 		= CryptoJS.SHA1(sQueryString).toString();
+	  
+	  $.getJSON( "http://www.booons.nl/api10/api10.asp?jsoncallback=?", {
+	    authkey: sAuthkey,
+	    username: sUsername,
+	    groupname: sGroupname,
+	    method: sMethode,
+	    hashKey: sHashKey
+	  })
+	    .done(function( data ) {
+				log('STARTED A ROUND');
+				log(data);
+		}
+	)
+};
+
 function registerDevice(){
 // TODO: get actual deviceid!
 	var iDeviceId		= '012345678';
@@ -56,34 +78,4 @@ function loginUser(){
 	)
 };
 
-function getGroup(){
-// TODO: get actual deviceid!
-	var sMethode		= 'examplejson';
-	var sAuthkey 		= 'IDKFA';
-	var sQueryString 	= 'authkey='+ sAuthkey +'&method='+sMethode;
-	var sHashKey 		= "";
-	var sHashKey 		= CryptoJS.SHA1(sQueryString).toString();
-	  
-	  $.getJSON( "http://www.booons.nl/api10/api10.asp?jsoncallback=?", {
-	    authkey: sAuthkey,
-	    method: sMethode,
-	    hashKey: sHashKey
-	  })
-	    .done(function( data ) {
-			log(data);
-			if(typeof data.group.round != 'undefined'){
 
-				var iRoundTimer = parseInt(data.group.round.timer);
-				log(iRoundTimer);
-				var iOrderTotal = 2;
-				var iUsertotal = 3;
-				var iAmbushTotal = 2;
-				
-				setOro(iRoundTimer, iOrderTotal, iUsertotal, iAmbushTotal);
-				setState('sst_oro');
-			} else {
-				setState('sst_nor');
-			}
-		}
-	)
-};

@@ -13,8 +13,11 @@
 		<script>
 		
 		</script>
+		<div id="loader" class="overlay loading"><h1 class="loader">wait for it...</h1><div class="loader">Loading...</div></div>
+		<div id="tutorial" class="overlay tutorial">uitleg</div>			
+
 		<div class="app_header">
-			<h1> Booons</h1>
+			<h1> Booons 5.1</h1>
 		</div>	
 		<div class="app_body">
 			<div class="app_title">
@@ -34,10 +37,9 @@
 				<div id="pag_nor" class="app_page">
 					<p>There is no open round, start one if you want some...</p>
 					<p>
-						<div class="lst_item"><img class="lst_icon" src="icons/svg/user.svg" /><div class="lst_label"><h3>4 Users</h3><p>are in this group</p></div></div>
-						<div class="lst_item"><img class="lst_icon" src="icons/svg/coffee-pot.svg" /><div class="lst_label"><h3>12 minutes</h3><p>Since the last round</p></div></div>
-						<div class="lst_item"><img class="lst_icon" src="icons/svg/coffee-beans.svg" /><div class="lst_label"><h3>11 booons</h3><p>are in the group, you have 3 booons</p></div></div>
-						<div class="lst_item"><img class="lst_icon" src="icons/svg/bars.svg" /><div class="lst_label"><h3>Number 2</h3><p>is you position on the board</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/user.svg" /><div class="lst_label"><h3><span id="lbl_groupusers"></span> Users</h3><p>are in this group</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/coffee-pot.svg" /><div class="lst_label"><h3><span id="lbl_minutessince"></span> minutes</h3><p>Since the last round</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/coffee-beans.svg" /><div class="lst_label"><h3><span id="lbl_grouppoints"></span> booons</h3><p>are in the group, you have <span id="lbl_userpoints"></span> booons</p></div></div>
 						</ul>
 					</p>
 				</div>
@@ -45,7 +47,7 @@
 					<p>There is a open round, order if you like to</p>
 					<p>
 						<div class="lst_item"><img class="lst_icon" src="icons/svg/time.svg" /><div class="lst_label"><h3><span id="lbl_roundtimer"></span> seconds</h3><p>left in this round</p></div></div>
-						<div class="lst_item"><img class="lst_icon" src="icons/svg/bars.svg" /><div class="lst_label"><h3>2 out of 4 orders</h3><p>are in, 2 more to go</p></div></div>
+						<div class="lst_item"><img class="lst_icon" src="icons/svg/bars.svg" /><div class="lst_label"><h3><span id="lbl_ordercount"></span> </h3> out of <span id="lbl_totalordercount"></span>  orders</h3><p>are in...</p></div></div>
 						<div class="lst_item"><img class="lst_icon" src="icons/svg/bomb.svg" /><div class="lst_label"><h3>1 ambush</h3><p>Are you one of them?</p></div></div>
 					</p>
 				</div>
@@ -59,7 +61,6 @@
 						<div class="lst_item selectable" itemtype="pro" itemvalue="irc"><img class="lst_icon" src="icons/svg/food.svg" /><div class="lst_label"><h3 class="icon-green">Irish coffee</h3><p>You drunk!</p></div></div>
 						<div class="lst_item selectable" itemtype="pro" itemvalue="wat"><img class="lst_icon" src="icons/svg/bottle.svg" /><div class="lst_label"><h3 class="icon-green">Water</h3><p>Milk, milk, milk... what does a cow drink?</p></div></div>
 						<div class="lst_item"><div class="lst_label"> </div></div>
-
 					</p>
 				</div>
 				<div id="pag_opt" class="app_page">
@@ -105,9 +106,13 @@
 			});
 			$('.gotostate').click(function(){
 				var sSelectedState = $(this).attr('state');
-				processState(sSelectedState);
+				var sUsername = $('#inp_username').val();
+				var sGroupname = $('#inp_groupname').val();
+				processState(sSelectedState, sUsername, sGroupname);
 			});
-
+			$('.overlay').click(function() {
+				toggleOverlay('loader');
+			});
 			$('.selectable').click(function(){
 				var sClickedItem = $(this).attr('itemtype');
 				var sClickedValue = $(this).attr('itemvalue');

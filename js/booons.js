@@ -1,7 +1,60 @@
 // --------------------------------------------------------------------------
-// interface functions 
+// main setup function 
 // --------------------------------------------------------------------------
 
+
+function setApp(sSelectedState, sGroupname, sUsername){
+// TODO: get actual deviceid!
+	var sMethode		= 'getgroup';
+	var sAuthkey 		= 'IDKFA';
+	var sQueryString 	= 'authkey='+ sAuthkey +'&groupname='+ sGroupname +'&method='+sMethode;
+	var sHashKey 		= "";
+	var sHashKey 		= CryptoJS.SHA1(sQueryString).toString();
+	  
+	  $.getJSON( "http://www.booons.nl/api10/api10.asp?jsoncallback=?", {
+	    authkey: sAuthkey,
+	    groupname: sGroupname,
+	    method: sMethode,
+	    hashKey: sHashKey
+	  })
+	    .done(function( data ) {
+			log(data);
+			if(typeof data.group.round != 'undefined'){
+				var iRoundTimer = parseInt(data.group.round.timer);
+				log(iRoundTimer);
+				var iOrderTotal = 2;
+				var iUsertotal = 3;
+				var iAmbushTotal = 2;
+				
+				setOro(iRoundTimer, iOrderTotal, iUsertotal, iAmbushTotal);
+				setState('sst_oro');
+			} else {
+					var iMinutesSince = (data.group.minutessince);
+					var aUsers = (data.group.users);
+					var iUserCount = aUsers.length;
+					var iPointCount = 0;
+					var iUserPoints = 0;
+
+					//Count point total in group and determine user points
+					aUsers.forEach( function (arrayItem)
+					{
+						if (sUsername == arrayItem.username) {
+							iUserPoints = arrayItem.pointbalance;
+						};
+					   iPointCount = iPointCount + arrayItem.pointbalance;
+					});
+				
+					setNor(iMinutesSince, iUserCount, iPointCount, iUserPoints);
+					setState('sst_nor');
+			}
+		}
+	)
+};
+
+
+// --------------------------------------------------------------------------
+// interface functions 
+// --------------------------------------------------------------------------
 
 	//set the defaults on the home page
 	function setUserDefaults(sUsername, sGroupname)  {
@@ -16,25 +69,39 @@
 		log('ambushes: '+iAmbushTotal);
 	}
 	
+	//Set no open round page
+	function setNor(iMinutesSince, iUserCount, iPointCount, iUserPoints) {
+		$('#lbl_minutessince').text(iMinutesSince);
+		$('#lbl_groupusers').text(iUserCount);
+		$('#lbl_grouppoints').text(iPointCount);
+		$('#lbl_userpoints').text(iUserPoints);
+		
+		log('last round was '+ iMinutesSince +'min ago');
+		log('Number of users in group: '+ iUserCount);
+		log('user has'+ iUserPoints +' point');
+}
+	
 	// Process the old state and move to the next
-	function processState(sSelectedState) {
+	function processState(sSelectedState, sUsername, sGroupname) {
+		toggleOverlay('in', 'loader');
 		$('.app_page').hide();
 		$('.app_error').hide();
 		switch(sSelectedState) {
-			case 'sst_rnd':
-				// This covers both oro as well as nor states
+			case 'sst_srd':
+				startRound(sGroupname, sUsername);
+				sSelectedState = 'sst_pro';
+				setApp(sSelectedState, sGroupname, sUsername);
 				log('PROCESS: round');
 				break;
 			default:
-			log('PROCESS: default');
 			loginUser();
-			sSelectedState = 'sst_oro';
+			setApp(sSelectedState, sGroupname, sUsername);
+//			sSelectedState = 'sst_oro';
 		}	
-		setState(sSelectedState);
 	}
 	
 	// Set states of the application
-	function setState(sState) {
+	function setState(sState, sGroupname) {
 		var sTitleLabel = '';
 		var sButtonLabel1 = '';
 		var sButtonLabel2 = '';
@@ -44,14 +111,14 @@
 
 		switch(sState) {
 			case 'sst_nor':
-				sTitleLabel = '[groupname]';
+				sTitleLabel = sGroupname;
 				sButtonLabel1 = 'start round';
 				sButtonLabel2 = '';
 				sPagename = 'nor';
-				sButtonTargetState = 'oro';
+				sButtonTargetState = 'sst_srd';
 				break;
 			case 'sst_oro':
-				sTitleLabel = '[groupname]';
+				sTitleLabel = sGroupname;
 				sButtonLabel1 = 'order';
 				sButtonLabel2 = '';
 				sPagename = 'oro';
@@ -87,7 +154,7 @@
 		log('set title to: '+sTitleLabel);
 		log('set statetarget to: '+sButtonTargetState);
 		$(".app_button1").attr('state',sButtonTargetState);
-
+		toggleOverlay('out', 'loader');
 	};
 
 // --------------------------------------------------------------------------
@@ -97,6 +164,15 @@
 	// Debug messages
 	function log(sMessage) {
 		console.log(sMessage);
+	}
+
+	function toggleOverlay(sDirection, sIdName) {
+		// alert('toggle');
+		if (sDirection == 'in') {
+			$('#'+sIdName).fadeIn(50);
+		} else {
+			$('#'+sIdName).fadeOut(500);
+		}
 	}
 
 
@@ -113,7 +189,7 @@
 				alert('the end!');	
 			} else {
 				iSecondsLeft = iSecondsLeft - 1;
-				log('tik:'+ iSecondsLeft);
+//				log('tik:'+ iSecondsLeft);
 				$('#lbl_roundtimer').text(iSecondsLeft);
 			}
 		},1000);				
